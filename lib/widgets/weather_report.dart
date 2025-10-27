@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_window/models/weather_model.dart';
 
 class WeatherReport extends StatelessWidget {
-  final WeatherModel weather;
+  final WeatherModel weather;//getting the model after calling the API which will be stored as weather 
 
   const WeatherReport({super.key, required this.weather});
 

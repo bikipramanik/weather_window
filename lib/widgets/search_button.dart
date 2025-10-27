@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SearchButton extends StatelessWidget {
-  final VoidCallback onSearchPressed;
+  final VoidCallback onSearchPressed; //the call back function that is used to call the API when clicking on this button
 
   const SearchButton({super.key, required this.onSearchPressed});
 
@@ -10,7 +10,7 @@ class SearchButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: ElevatedButton.icon(
-        onPressed: onSearchPressed,
+        onPressed: onSearchPressed,//using this as on pressed (calling the api when tapping on this button)
         icon: const Icon(Icons.location_on_outlined, color: Colors.white),
         label: const Text(
           "Search Weather",

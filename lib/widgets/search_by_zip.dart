@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SearchByZip extends StatefulWidget {
-  final Function(String zip, String country) onZipChanged;
+  final Function(String zip, String country) onZipChanged;//functin that will notify parent the zip and country
 
   const SearchByZip({super.key, required this.onZipChanged});
 
@@ -10,14 +10,15 @@ class SearchByZip extends StatefulWidget {
 }
 
 class _SearchByZipState extends State<SearchByZip> {
-  final TextEditingController _zipController = TextEditingController();
-  final TextEditingController _countryController = TextEditingController();
+  final TextEditingController _zipController = TextEditingController();//controller for zip field
+  final TextEditingController _countryController = TextEditingController();//controller for country field
 
-  void _notifyParent() {
-    widget.onZipChanged(
-      _zipController.text.trim(),
-      _countryController.text.trim(),
+  void _notifyParent() {//to notify parent with the call back function
+    widget.onZipChanged(//calling the callback function
+      _zipController.text.trim(),//sending the text of zipcontroller and send it as a parameter as zip
+      _countryController.text.trim(),//sending the text of countryController and send it as a parameter as country
     );
+    FocusScope.of(context).unfocus();//unfocussing it after submission and on tap outside
   }
 
   @override
@@ -26,9 +27,10 @@ class _SearchByZipState extends State<SearchByZip> {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       child: Column(
         children: [
-          TextField(
+          TextField(//first text field for zip code
             controller: _zipController,
-            onChanged: (_) => _notifyParent(),
+            onSubmitted: (_) => _notifyParent(),//after submission calling that call back function through notify parent
+            onTapOutside: (event) => _notifyParent(),//same when tap outside
             cursorHeight: 25,
             cursorColor: Colors.blueAccent,
             style: const TextStyle(fontSize: 18),
@@ -55,9 +57,10 @@ class _SearchByZipState extends State<SearchByZip> {
             ),
           ),
           SizedBox(height: 12),
-          TextField(
+          TextField(//second text field for country code
             controller: _countryController,
-            onChanged: (_) => _notifyParent(),
+            onSubmitted: (_) => _notifyParent(),
+            onTapOutside: (event) => _notifyParent(),
             cursorHeight: 25,
             cursorColor: Colors.blueAccent,
             style: const TextStyle(fontSize: 18),

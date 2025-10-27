@@ -31,6 +31,8 @@ class WeatherModel {
     required this.country,
   });
 
+
+//factory constructor allows me to create a instance without creating a instance just returning the object according to the data we get
   factory WeatherModel.fromJson(Map<String, dynamic> json) {
     return WeatherModel(
       cityName: json["name"] ?? '',
